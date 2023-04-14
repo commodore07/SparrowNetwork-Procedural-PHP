@@ -1,0 +1,34 @@
+RewriteEngine On
+
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{HTTP_HOST} ^(www\.)?sparrownetwork\.net
+RewriteRule ^(.*)$ https://www.sparrownetwork.net/$1 [R,L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ profile.php?u=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ profile.php?u=$1
+
+RewriteRule ^([a-zA-Z0-9_-]+).trade$ trader.php?u=$1
+RewriteRule ^([a-zA-Z0-9_-]+).html$ notify_chirp.php?term=$1
+RewriteRule ^([a-zA-Z0-9_-]+).empower$ supportflow.php?u=$1
+
+Options +MultiViews
+IndexIgnore *
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php5_module>
+   php_flag asp_tags Off
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 256M
+   php_value post_max_size 128M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php56"
+   php_value upload_max_filesize 128M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
